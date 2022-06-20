@@ -14,7 +14,7 @@ const Comments = () => {
 
     ////// GET All Comments
     useEffect(() => {
-        axios.get( `http://localhost:3001/comments/${postId}`).then(res => {
+        axios.get( `https://art-foody.herokuapp.com/comments/${postId}`).then(res => {
             setComments(res.data)
             console.log(res.data);
         })  
@@ -25,7 +25,7 @@ const Comments = () => {
      const SendComment = (e) => {
         e.preventDefault()
          const postComment = {commentContent:newComment ,PostId :postId}
-        axios.post("http://localhost:3001/comments",postComment,{
+        axios.post("https://art-foody.herokuapp.com/comments",postComment,{
             headers:{accessToken:localStorage.getItem("SecretToken")}
         }).then(res => {
             try {
@@ -45,7 +45,7 @@ const Comments = () => {
 
      const DeleteComment = (commentId) => {
           console.log("comment",commentId);
-         axios.delete(`http://localhost:3001/comments/${commentId}`,{ 
+         axios.delete(`https://art-foody.herokuapp.com/comments/${commentId}`,{ 
              headers:{accessToken:localStorage.getItem("SecretToken")} 
             }).then(res => {
                

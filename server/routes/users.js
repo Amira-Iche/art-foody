@@ -1,7 +1,7 @@
 const express = require('express');
 const  router  = express.Router()
 const   { Users , Profile}   = require('../models')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const {sign} = require ('jsonwebtoken')
 const {AuthMiddleware} = require ('../middleware/AuthToken')
 const Multer = require ('../middleware/Multer')
@@ -42,6 +42,7 @@ router.post('/login', async (req,res)=> {
 
 router.get('/auth', AuthMiddleware, async (req,res) => {
     res.json(req.user)
+   
 })
 
 router.get('/userinfo/:id', async (req,res) => {

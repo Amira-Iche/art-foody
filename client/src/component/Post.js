@@ -17,7 +17,7 @@ const Post = () => {
 
     
    useEffect(() => {
-    axios.get( `http://localhost:3001/posts/byId/${postId}`).then(res => {
+    axios.get( `https://art-foody.herokuapp.com/posts/byId/${postId}`).then(res => {
         setPostData(res.data)
         console.log("post content",res.data);
         console.log(isAuth);
@@ -25,7 +25,7 @@ const Post = () => {
     },[])
 
     const deleteOne = () => {
-        axios.delete( `http://localhost:3001/posts/byId/${postId}`).then(res => {
+        axios.delete( `https://art-foody.herokuapp.com/posts/byId/${postId}`).then(res => {
         navigate("/")
         console.log("deleted");
     })

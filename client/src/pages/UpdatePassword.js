@@ -10,7 +10,7 @@ function UpdatePassword() {
     const [newPassword,setNewPassword] = useState("")
 
     const updatePassword = () => {
-        axios.put("http://localhost:3001/auth/updatepassword",{
+        axios.put("https://art-foody.herokuapp.com/auth/updatepassword",{
             oldPassword:oldPassword ,newPassword:newPassword
         }, {
          headers: {accessToken:localStorage.getItem("SecretToken")}

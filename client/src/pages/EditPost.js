@@ -14,7 +14,7 @@ function EditPost() {
    
 
     useEffect(() => {
-        axios.get( `http://localhost:3001/posts/byId/${postId}`).then(res => {
+        axios.get( `https://art-foody.herokuapp.com/posts/byId/${postId}`).then(res => {
             setTitle(res.data.title)
             setPostText(res.data.postText)
             setImage(res.data.image)
@@ -28,7 +28,7 @@ function EditPost() {
         formData.append("image", image)
         formData.append("title", title)
         formData.append("postText", postText)
-       axios.put(`http://localhost:3001/posts/byId/${postId}`,formData , {
+       axios.put(`https://art-foody.herokuapp.com/posts/byId/${postId}`,formData , {
         headers: {accessToken:localStorage.getItem("SecretToken")}
        }).then(res => {
            console.log("working");

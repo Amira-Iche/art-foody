@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import img from "../images/profile.png"
 
 
 
@@ -12,35 +13,38 @@ function CardPost({post , submitLikes}) {
 
 
   useEffect(()=> {
-    axios.get(`http://localhost:3001/auth/profile`,{
+    axios.get(`https://art-foody.herokuapp.com/auth/profile`,{
       headers:{accessToken:localStorage.getItem("SecretToken")}
   }).then(res => {
+    console.log(res.data);
       setProfileImg(res.data.image)
   })
 
   },[])
 
+ 
+
 
   return (
     <div >
-      <article className="  h-5/6 max-w-xs mb-10  rounded-lg shadow-lg">
+      <article className="  md:h-5/6 md:max-w-xs sm:max-w-md mb-10  rounded-lg shadow-lg">
                     
                     <a className="flex justify-center" href={`/post/${post.id}`}>
                         
-                        <img alt="Placeholder" className="block rounded-lg shadow-lg w-7/12 h-4/6  mt-5  " src={post.image}/>
+                        <img alt="Post pic" className="block rounded-lg shadow-lg md:w-7/12 sm:w-10/12 h-4/6  mt-5  " src={post.image}/>
                     </a>
 
-                    <header className="flex items-center justify-between leading-tight  md:p-4">
+                    <header className="flex sm:items-center sm:justify-between leading-tight md:p-4 sm:m-5">
                         <h1 className="text-base"> {post.title} </h1>
                         <p className="text-grey-darker text-sm">
                             10mn
                         </p>
                     </header>
 
-                    <footer className="flex items-center justify-between leading-none pl-2 pb-10">
+                    <footer className="flex items-center justify-between leading-none pl-2 pb-14">
                         <div className="flex items-center no-underline hover:underline text-black" >
                         {   profileImg ? <img src={profileImg} alt="profileimg" className="block rounded-full w-1/6"/>
-                         :  <img alt="profileimg" className="block rounded-full" src="https://picsum.photos/32/32/?random"/>
+                         :  <img alt="profile img" className="block rounded-full w-1/6" src={img} />
                         }
                             <p className="ml-2 text-sm">
                             <Link to={`/profile/${post.UserId}`}> {post.username} </Link>

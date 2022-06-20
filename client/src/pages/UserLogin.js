@@ -15,7 +15,7 @@ const UserLogin =() => {
 const Login =(e) => {
     e.preventDefault()
     const userData = {username:username,password:password}
-    axios.post('http://localhost:3001/auth/login',userData).then(res => {
+    axios.post('https://art-foody.herokuapp.com/auth/login',userData).then(res => {
       console.log(res.data);
         if(res.data.error) {
            console.log(res.data.error)

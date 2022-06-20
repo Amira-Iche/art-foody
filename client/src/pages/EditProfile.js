@@ -20,7 +20,7 @@ function EditProfile() {
     userInfo.append("image" ,profileImage)
     userInfo.append("bio" ,bio)
 
-    axios.post(`http://localhost:3001/auth/profile`,userInfo,{
+    axios.post(`https://art-foody.herokuapp.com/auth/profile`,userInfo,{
       headers:{accessToken:localStorage.getItem("SecretToken")}
   }).then(res => {
     try {

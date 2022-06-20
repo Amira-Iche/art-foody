@@ -10,7 +10,7 @@ const AllPosts = () => {
     
     ////// Fetch data from 
      useEffect(() => {
-        axios.get("http://localhost:3001/posts").then(res => {
+        axios.get("https://art-foody.herokuapp.com/posts").then(res => {
            //setallPosts([...allPosts,res.data])
            setallPosts(res.data) 
            console.log("All post data",res.data);
@@ -21,7 +21,7 @@ const AllPosts = () => {
      
 
      const submitLikes = (postId)  => { 
-        axios.post("http://localhost:3001/likes",{PostId : postId}, { 
+        axios.post("https://art-foody.herokuapp.com/likes",{PostId : postId}, { 
             headers: {accessToken:localStorage.getItem("SecretToken")}
         }) .then((res) => {
             setallPosts(
@@ -47,7 +47,7 @@ const AllPosts = () => {
    const navigate = useNavigate();
     
     return (
-      <div className="container my-12  px-4 ">
+      <div className=" my-12  px-4 ">
         <div className="flex justify-around flex-wrap  ">
   
           {/* <!-- Column --> */}

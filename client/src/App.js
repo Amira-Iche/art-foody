@@ -26,7 +26,7 @@ import EditProfile from './pages/EditProfile';
 
       useEffect(() => {
         axios
-          .get("http://localhost:3001/auth/auth", {
+          .get("https://art-foody.herokuapp.com/auth/auth", {
             headers: {
               accessToken: localStorage.getItem("SecretToken"),
             },

@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import {AuthContext} from '../helpers/AuthContext'
 import CardPost from '../component/CardPost'
+import profileImg from "../images/profile.png"
 import "../App.css"
 
 function Profile() {
@@ -18,12 +19,12 @@ function Profile() {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/auth/userinfo/${userid}`).then(res => {
+        axios.get(`https://art-foody.herokuapp.com/auth/userinfo/${userid}`).then(res => {
             setUsername(res.data.username)
             
         })
 
-        axios.get(`http://localhost:3001/auth/profile`,{
+        axios.get(`https://art-foody.herokuapp.com/auth/profile`,{
             headers:{accessToken:localStorage.getItem("SecretToken")}
         }).then(res => {
             console.log("data",res.data);
@@ -31,7 +32,7 @@ function Profile() {
             setImage(res.data.image)
         })
 
-        axios.get(`http://localhost:3001/posts/byuserId/${userid}`).then(res => {
+        axios.get(`https://art-foody.herokuapp.com/posts/byuserId/${userid}`).then(res => {
             setPosts(res.data)
         })
        
@@ -41,16 +42,19 @@ function Profile() {
     return (
         <div>
             <Nav/>
-            <div className=" flex ">
+            <div className=" flex md:flex-row sm:flex-col">
                  {/*////////////// user Info ///////////// */}
-            <div>
-                <div className=" px-4 sm:px-0 w-2/3 ">
+            <div className=' md:w-96 sm:w-full '>
+                <div className=" px-4 sm:px-0 h-full ">
 
-                <div className="bg-slate-100 p-3 border-t-4 border-indigo-500  ">
+                <div className="bg-slate-100 p-3 border-t-4 border-indigo-500 h-full ">
                     <div className="image overflow-hidden">
-                        <img className=" w-1/3 h-1/3"
+                        {image ?  <img className=" w-1/3 h-1/3"
                             src={image}
-                            alt="" />
+                            alt="profile img" />:  <img className=" w-1/3 h-1/3"
+                            src={profileImg}
+                            alt="profile img" />}
+                       
                     </div>
                     <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{username} </h1>
         
@@ -84,8 +88,8 @@ function Profile() {
             </div> 
 
             {/*////////////// user Posts///////////// */}
-            <div className=" container mr-5 md:mt-5 ">
-                <div className='flex flex-wrap justify-between'>
+            <div className=" mx-6  mt-5 ">
+                <div className='flex flex-wrap justify-around'>
                      {posts.map((post,key) => {
                  return (
                     <div >

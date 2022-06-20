@@ -17,7 +17,7 @@ const UserRegister = () => {
 const Register =(e) => {
     e.preventDefault()
     const userData = {username:username,password:password}
-    axios.post('http://localhost:3001/auth/signup',userData).then(res => {
+    axios.post('https://art-foody.herokuapp.com/auth/signup',userData).then(res => {
         console.log("working",res.data);
         navigate('/login')
         setUsername("")

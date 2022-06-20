@@ -26,7 +26,7 @@ function CreatePost() {
           
         }
 
-        axios.post("http://localhost:3001/posts", formData, {
+        axios.post("https://art-foody.herokuapp.com/posts", formData, {
           headers: {
              accessToken:localStorage.getItem("SecretToken")
             } 
